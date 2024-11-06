@@ -1,23 +1,25 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // Add this line
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development', 
     entry: './src/index.js',
     output: {
-        filename: 'main.js',
+        filename: 'bundle.js',  
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
     plugins: [
-        new CleanWebpackPlugin(), // Add cleaning plugin
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/template.html', 
+            template: './src/template.html',
+            filename: 'index.html', 
         }),
     ],
     devServer: {
         static: './dist',
-        port: 4002, 
+        port: 2001,
     },
     module: {
         rules: [
@@ -27,7 +29,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
-                type: 'asset/resource',
+                type: 'asset/resource', 
             },
         ],
     },
