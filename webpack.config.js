@@ -8,7 +8,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',  
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/',
+        publicPath: process.env.NODE_ENV === 'production' ? '/restaurant-page-alexandra-riva-public/' : '/',  // Adjust public path for GitHub Pages
     },
     plugins: [
         new CleanWebpackPlugin(),
